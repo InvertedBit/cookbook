@@ -8,6 +8,7 @@ import './App.scss';
 import RecipeList from './RecipeList';
 import Recipe from './Recipe';
 import RecipeEditor from './RecipeEditor';
+import CONFIG from '../Config';
 
 UIkit.use(Icons);
 
@@ -26,7 +27,7 @@ class App extends React.Component {
         this.setState({
             loadingState: 'Loading API Data...'
         });
-        fetch('http://localhost:3001/api/v1/recipes')
+        fetch(CONFIG.API_URL + 'api/v1/recipes')
             .then(res => res.json())
             .then((data) => {
                 this.setState({

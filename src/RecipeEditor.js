@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import CONFIG from '../Config';
 import RecipeForm from './RecipeForm';
 
 
@@ -16,7 +17,7 @@ class RecipeEditor extends React.Component {
     }
 
     deleteRecipe(id) {
-        fetch('http://localhost:3001/api/v1/recipes/'+id, {
+        fetch(CONFIG.API_URL + 'api/v1/recipes/'+id, {
             method: 'DELETE'
         })
             .then(response => {
@@ -51,7 +52,7 @@ class RecipeEditor extends React.Component {
 
         }
 
-        fetch('http://localhost:3001/api/v1/recipes', {
+        fetch(CONFIG.API_URL + 'api/v1/recipes', {
             method: 'POST',
             body: formData
         })
