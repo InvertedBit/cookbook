@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import CONFIG from '../Config';
+import CONFIG from './Config';
 import RecipeForm from './RecipeForm';
 
 

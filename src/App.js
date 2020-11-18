@@ -8,7 +8,7 @@ import './App.scss';
 import RecipeList from './RecipeList';
 import Recipe from './Recipe';
 import RecipeEditor from './RecipeEditor';
-import CONFIG from '../Config';
+import CONFIG from './Config';
 
 UIkit.use(Icons);
 
