@@ -1,0 +1,80 @@
+#splashScreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #222222;
+
+    opacity: 1;
+
+    &.animated {
+        -webkit-animation: fadeOutAnimation 1s ease-out;
+        -moz-animation: fadeOutAnimation 1s ease-out;
+        -o-animation: fadeOutAnimation 1s ease-out;
+        animation: fadeOutAnimation 1s ease-out;
+    }
+
+    @-webkit-keyframes fadeOutAnimation {
+        0% {
+            display: block;
+            opacity: 1;
+        }
+
+        99% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            display: none;
+            opacity: 0;
+        }
+    }
+
+    @-moz-keyframes fadeOutAnimation {
+        0% {
+            display: block;
+            opacity: 1;
+        }
+
+        99% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            display: none;
+            opacity: 0;
+        }
+    }
+
+
+    @-o-keyframes fadeOutAnimation {
+        0% {
+            display: block;
+            opacity: 1;
+        }
+
+        99% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            display: none;
+            opacity: 0;
+        }
+    }
+
+
+    @keyframes fadeOutAnimation {
+        0% {
+            display: block;
+            opacity: 1;
+        }
+
+        99% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            display: none;
+            opacity: 0;
+        }
+    }
+}

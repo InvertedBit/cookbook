@@ -1,25 +1,85 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+// import logo from './logo.svg';
+//import './App.css';
+import './App.scss';
+import RecipeList from './RecipeList';
+import Recipe from './Recipe';
+import RecipeEditor from './RecipeEditor';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+UIkit.use(Icons);
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            recipes: null,
+            loadingState: 'Starting App...',
+            splash: true
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            loadingState: 'Loading API Data...'
+        });
+        fetch('http://localhost:3001/api/v1/recipes')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({
+                    recipes: data.data,
+                    loadingState: 'Done!'
+                }, () => {
+                    document.getElementById("splashScreen").className = "animated";
+                    setTimeout(() => {
+                        this.setState({
+                            splash: false
+                        });
+                }, 1000)});
+            })
+            .catch(console.log);
+    }
+
+    render() {
+        // if (this.state.splash) {
+        //     return (
+        //     );
+        // } else {
+            return (
+                <div>
+                    {this.state.splash &&
+                <div className="uk-overlay" id="splashScreen">
+                    <div className="uk-position-center" data-uk-spinner="ratio: 5">
+                    </div>
+                    <div className="uk-position-center">{this.state.loadingState}</div>
+                </div>
+                    }
+                    {this.state.recipes !== null &&
+                <Router>
+                    <Switch>
+                        <Route exact path="/recipes">
+                            <RecipeList recipes={this.state.recipes} />
+                        </Route>
+                        <Route exact path="/recipes/new">
+                            <RecipeEditor recipes={this.state.recipes} />
+                        </Route>
+                        <Route exact path="/recipes/:recipeId">
+                            <Recipe recipes={this.state.recipes} />
+                        </Route>
+                        <Route exact path="/recipes/edit/:recipeId">
+                            <RecipeEditor recipes={this.state.recipes} />
+                        </Route>
+                    </Switch>
+                </Router>
+                    }
+                </div>
+            );
+        // }
+    }
 }
+
 
 export default App;
