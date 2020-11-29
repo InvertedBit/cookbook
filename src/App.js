@@ -1,7 +1,7 @@
 import React from 'react';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, withRouter, Redirect } from 'react-router-dom';
 // import logo from './logo.svg';
 //import './App.css';
 import './App.scss';
@@ -34,7 +34,8 @@ class App extends React.Component {
                     recipes: data.data,
                     loadingState: 'Done!'
                 }, () => {
-                    document.getElementById("splashScreen").className = "animated";
+//                    this.props.history.push('/recipes');
+                    // document.getElementById("splashScreen").className = "animated";
                     setTimeout(() => {
                         this.setState({
                             splash: false
@@ -44,23 +45,27 @@ class App extends React.Component {
             .catch(console.log);
     }
 
+
+
     render() {
         // if (this.state.splash) {
         //     return (
         //     );
         // } else {
             return (
-                <div>
-                    {this.state.splash &&
-                <div className="uk-overlay" id="splashScreen">
-                    <div className="uk-position-center" data-uk-spinner="ratio: 5">
-                    </div>
-                    <div className="uk-position-center">{this.state.loadingState}</div>
-                </div>
-                    }
-                    {this.state.recipes !== null &&
                 <Router>
                     <Switch>
+                        <Route exact path="/">
+                            {this.state.splash ? 
+                            <div>
+                                <div className="uk-position-center" data-uk-spinner="ratio: 5">
+                                </div>
+                                <div className="uk-position-center">{this.state.loadingState}</div>
+                            </div>
+                            :
+                            <Redirect to="/recipes" />
+                            }
+                        </Route>
                         <Route exact path="/recipes">
                             <RecipeList recipes={this.state.recipes} />
                         </Route>
@@ -75,8 +80,6 @@ class App extends React.Component {
                         </Route>
                     </Switch>
                 </Router>
-                    }
-                </div>
             );
         // }
     }
