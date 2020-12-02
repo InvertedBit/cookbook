@@ -2,8 +2,6 @@ import React from 'react';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import { Route, BrowserRouter as Router, Switch, withRouter, Redirect } from 'react-router-dom';
-// import logo from './logo.svg';
-//import './App.css';
 import './App.scss';
 import RecipeList from './RecipeList';
 import Recipe from './Recipe';
@@ -34,8 +32,6 @@ class App extends React.Component {
                     recipes: data.data,
                     loadingState: 'Done!'
                 }, () => {
-//                    this.props.history.push('/recipes');
-                    // document.getElementById("splashScreen").className = "animated";
                     setTimeout(() => {
                         this.setState({
                             splash: false
@@ -48,10 +44,6 @@ class App extends React.Component {
 
 
     render() {
-        // if (this.state.splash) {
-        //     return (
-        //     );
-        // } else {
             return (
                 <Router>
                     <Switch>
@@ -73,10 +65,14 @@ class App extends React.Component {
                             <RecipeEditor recipes={this.state.recipes} />
                         </Route>
                         <Route exact path="/recipes/:recipeId">
-                            <Recipe recipes={this.state.recipes} />
+                            {this.state.recipes &&
+                                <Recipe recipes={this.state.recipes} />
+                            }
                         </Route>
                         <Route exact path="/recipes/edit/:recipeId">
-                            <RecipeEditor recipes={this.state.recipes} />
+                            {this.state.recipes &&
+                                <RecipeEditor recipes={this.state.recipes} />
+                            }
                         </Route>
                     </Switch>
                 </Router>

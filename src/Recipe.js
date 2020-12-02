@@ -4,7 +4,10 @@ import RecipeSteps from './RecipeSteps';
 
 function Recipe(props) {
     let params = useParams();
-    let recipe = props.recipes.find(r => r._id === params.recipeId);
+    let recipe = undefined;
+    if (props.recipes) {
+        recipe = props.recipes.find(r => r._id === params.recipeId);
+    }
     let recipeHeader = (
             <div className="uk-section uk-section-primary">
                 <div className="uk-container">
@@ -13,27 +16,30 @@ function Recipe(props) {
             </div>
 
     );
+    if (recipe !== undefined) {
 
-    if (recipe !== undefined && recipe.images.length === 0 || !recipe.images.some(i => i.thumbnail)) {
-        recipeHeader = (
-                <div className="uk-section uk-section-primary">
-                    <div className="uk-container">
-                        <Link to="/recipes">Back to Recipe List</Link>
-                        <h1>{recipe.name}</h1>
-                    </div>
-                </div>
-        );
-    } else {
-        recipeHeader = (
-                <div className="uk-section-default">
-                    <div className="uk-section uk-light uk-background-cover" style={{backgroundImage: "url(" + CONFIG.API_URL + "/" + recipe.images.find(i => i.thumbnail).path + ")" }}>
+        if (recipe.thumbnail === undefined) {
+            recipeHeader = (
+                    <div className="uk-section uk-section-primary">
                         <div className="uk-container">
                             <Link to="/recipes">Back to Recipe List</Link>
                             <h1>{recipe.name}</h1>
                         </div>
                     </div>
-                </div>
-        );
+            );
+        } else {
+            recipeHeader = (
+                    <div className="uk-section-default">
+                        <div className="uk-section uk-light uk-background-cover" style={{backgroundImage: "url(" + CONFIG.API_URL + recipe.thumbnail.path + ")" }}>
+                            <div className="uk-container">
+                                <Link to="/recipes">Back to Recipe List</Link>
+                                <h1>{recipe.name}</h1>
+                            </div>
+                        </div>
+                    </div>
+            );
+        }
+
     }
 
     return (

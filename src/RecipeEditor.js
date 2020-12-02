@@ -8,7 +8,7 @@ class RecipeEditor extends React.Component {
     constructor(props) {
         super(props);
         let recipeId = this.props.match.params ? this.props.match.params.recipeId : false;
-        let hasValidRecipe = recipeId && this.props.recipes.some(r => r._id === recipeId);
+        let hasValidRecipe = recipeId && this.props.recipes && this.props.recipes.some(r => r._id === recipeId);
         this.state = {
             recipe:  hasValidRecipe ? this.props.recipes.find(r => r._id === recipeId) : {},
             title: hasValidRecipe ? "Edit" : "Create",
@@ -30,7 +30,6 @@ class RecipeEditor extends React.Component {
     onFormSubmit(data) {
         console.log(data);
         console.log("submitting!");
-        // return;
 
         let formData = new FormData();
 
@@ -42,13 +41,18 @@ class RecipeEditor extends React.Component {
 
         if (data.images !== undefined && data.images.length > 0) {
 
-            data.images.forEach( function(image, i) {
-                formData.append("image-"+i, image.fileObject);
+            let images = [];
 
-                if (image.isDefault) {
-                    formData.append("defaultImage", i);
+            data.images.forEach( function(image, i) {
+                if (image.uploaded) {
+                    images.push(image._id);
+                    if (image.isDefault) {
+                        formData.append('thumbnail', image._id);
+                    }
                 }
-            }, formData);
+            });
+
+            formData.append('images', JSON.stringify(images));
 
         }
 
@@ -67,7 +71,7 @@ class RecipeEditor extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="recipeForm">
                 <div className="uk-section uk-section-primary">
                     <div className="uk-container">
                         <Link to="/recipes">Back to Recipe List</Link>

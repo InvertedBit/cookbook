@@ -14,17 +14,17 @@ function RecipeList(props) {
             recipeList = props.recipes.map((recipe) => 
                 <div key={recipe._id}>
                     <div className="uk-card uk-card-default">
-                        { recipe.images.length > 1 && recipe.images.find(i => i.thumbnail) &&
+                        { recipe.thumbnail &&
                         <div className="uk-card-header">
                             <div className="uk-inline">
-                                <img src={CONFIG.API_URL + recipe.images.find(i => i.thumbnail).path} />
+                                <img src={CONFIG.API_URL + recipe.thumbnail.path} />
                                 <div className="uk-overlay uk-overlay-default uk-position-bottom">
                                     <h3 className="uk-card-title">{recipe.name}</h3>
                                 </div>
                             </div>
                         </div>
                         }
-                        { (recipe.images.length === 0 || !recipe.images.find(i => i.thumbnail)) &&
+                        { (recipe.thumbnail === undefined) &&
                         <div className="uk-card-header">
                             <h3 className="uk-card-title">{recipe.name}</h3>
                         </div>

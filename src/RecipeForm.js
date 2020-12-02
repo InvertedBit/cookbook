@@ -4,9 +4,9 @@ import ImagePicker from './ImagePicker';
 import IngredientPicker from './IngredientPicker';
 import StepComposer from './StepComposer';
 
-const ImagePickerInput = () => (
+const ImagePickerInput = (props) => (
     <Field name="images" id="images" type="file">
-        {({ field: { value }, form: { setFieldValue } }) => (
+        {({field: { value }, form: { setFieldValue } }) => (
             <div>
                 <label htmlFor="images" className="uk-form-label">
                     Upload Images
@@ -14,7 +14,8 @@ const ImagePickerInput = () => (
                 <div>
                     <ImagePicker
                         value={value}
-                        handleChange={file => setFieldValue("images", file)} />
+                        thumbnail={props.thumbnail}
+                        handleChange={images => setFieldValue("images", images)} />
                 </div>
             </div>
         )}
@@ -60,7 +61,8 @@ const RecipeForm = (props) => {
             initialValues={recipe}
             onSubmit={(values) => {
                 props.callback(values);
-            }}>
+            }}
+            >
                 <Form>
                     <div className="uk-form-controls">
                     <label className="uk-form-label" htmlFor="name">Name</label>
@@ -75,7 +77,7 @@ const RecipeForm = (props) => {
 
 
                     <div className="uk-form-controls uk-margin-top">
-                        <ImagePickerInput />
+                        <ImagePickerInput thumbnail={props.recipe.thumbnail} />
                     </div>
 
                     <div className="uk-form-controls uk-margin-top">
