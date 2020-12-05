@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "extract": "i18next -c src/i18next-parser.config.js"
+    "i18nextract": "i18next -c src/i18next-parser.config.js"
   },
   "eslintConfig": {
     "extends": [

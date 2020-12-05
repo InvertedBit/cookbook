@@ -74,16 +74,16 @@ class App extends React.Component {
                             <RecipeList onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                         </Route>
                         <Route exact path="/recipes/new">
-                            <RecipeEditor recipes={this.state.recipes} />
+                            <RecipeEditor onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                         </Route>
                         <Route exact path="/recipes/:recipeId">
                             {this.state.recipes &&
-                                <Recipe recipes={this.state.recipes} />
+                                <Recipe onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                             }
                         </Route>
                         <Route exact path="/recipes/edit/:recipeId">
                             {this.state.recipes &&
-                                <RecipeEditor recipes={this.state.recipes} />
+                                <RecipeEditor onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                             }
                         </Route>
                     </Switch>

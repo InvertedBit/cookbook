@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 
 class IngredientPicker extends React.Component {
     constructor(props) {
@@ -91,15 +92,16 @@ class IngredientPicker extends React.Component {
     }
     
     render() {
+        const { t } = this.props;
         return (
             <div>
                 <table className="uk-table uk-table-striped">
                 <thead>
                     <tr>
-                        <th>Ingredient</th>
-                        <th>Amount</th>
-                        <th>Unit</th>
-                        <th>Action</th>
+                        <th>{t('ingredientPicker.table.headings.ingredient', 'Ingredient')}</th>
+                        <th>{t('ingredientPicker.table.headings.amount', 'Amount')}</th>
+                        <th>{t('ingredientPicker.table.headings.unit', 'Unit')}</th>
+                        <th>{t('ingredientPicker.table.headings.action', 'Action')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,4 +115,4 @@ class IngredientPicker extends React.Component {
 }
 
 
-export default IngredientPicker;
+export default withTranslation('translations')(IngredientPicker);

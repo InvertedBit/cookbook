@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import CONFIG from './Config';
 import { useTranslation } from "react-i18next";
 import './i18n';
+import Header from './Header';
 
 function RecipeList(props) {
 
@@ -58,13 +59,10 @@ function RecipeList(props) {
             }
         return (
             <div>
-                <div className="uk-section uk-section-primary">
-                    <div className="uk-container">
-                        <h1>{t('recipeList.title', 'Recipe List')}</h1>
-                        <button className="uk-icon-button" data-uk-icon="plus" onClick={() => history.push('/recipes/new')}></button>
-                        {languageSwitcher}
-                    </div>
-                </div>
+                <Header onLanguageChange={props.onLanguageChange}>
+                    <h1>{t('recipeList.title', 'Recipe List')}</h1>
+                    <button className="uk-icon-button" data-uk-icon="plus" onClick={() => history.push('/recipes/new')}></button>
+                </Header>
                 <div className="uk-section uk-section-default">
                     <div className ="uk-container">
                         <div className="uk-child-width-1-3 uk-text-center uk-grid-match" data-uk-grid>
@@ -78,3 +76,18 @@ function RecipeList(props) {
 
 
 export default RecipeList;
+
+/*
+ *
+
+                <div className="uk-section uk-section-primary">
+                    <div className="uk-container">
+                        <h1>{t('recipeList.title', 'Recipe List')}</h1>
+                        <button className="uk-icon-button" data-uk-icon="plus" onClick={() => history.push('/recipes/new')}></button>
+                        {languageSwitcher}
+                    </div>
+                </div>
+
+
+ *
+ */

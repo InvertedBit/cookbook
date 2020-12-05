@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import CONFIG from './Config';
 
 import './ImagePicker.scss';
@@ -32,11 +33,14 @@ class ImagePicker extends React.Component {
             file: [null],
             images: initialImages
         };
-        console.log(this.state.images);
+
+        this.uploadButtonRef = React.createRef();
+
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this);
         this.handleDefaultImageChange = this.handleDefaultImageChange.bind(this);
         this.uploadImages = this.uploadImages.bind(this);
         this.handleFormDestruction = this.handleFormDestruction.bind(this);
+        this.handleUploadButtonClick = this.handleUploadButtonClick.bind(this);
 
         document.addEventListener("recipeFormDestroyed", this.handleFormDestruction);
     }
@@ -148,7 +152,13 @@ class ImagePicker extends React.Component {
         }, this);
     }
 
+    handleUploadButtonClick(e) {
+        e.preventDefault();
+        this.uploadButtonRef.current.click();
+    }
+
     render() {
+        const { t } = this.props;
 
         return (
             <div className="imagepicker">
@@ -159,7 +169,7 @@ class ImagePicker extends React.Component {
                                 <div className="uk-card-body">
                                     <div className="uk-inline uk-width-expand">
                                     <div className="uk-position-center-left">
-                                        <input className="uk-radio" type="radio" name="defaultImage[]" disabled={!obj.uploaded} checked={obj.isDefault} value={obj._id} onChange={this.handleDefaultImageChange} /> Thumbnail
+                                        <input className="uk-radio" type="radio" name="defaultImage[]" disabled={!obj.uploaded} checked={obj.isDefault} value={obj._id} onChange={this.handleDefaultImageChange} /> {t('imagePicker.thumbnail', 'Thumbnail')}
                                     </div>
                                     <div className="uk-position-center-right">
                                         <button className="uk-icon-button uk-button-danger" data-uk-icon="trash" onClick={(e) => this.handleRemoveImage(e, obj._id)} />
@@ -180,7 +190,10 @@ class ImagePicker extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <input type="file" multiple onChange={this.uploadMultipleFiles} />
+                    <button className="uk-button uk-button-primary" onClick={this.handleUploadButtonClick}>
+                        {t('imagePicker.uploadButton.text', 'Upload image')}
+                    </button>
+                    <input type="file" className="uploadInput" multiple onChange={this.uploadMultipleFiles} ref={this.uploadButtonRef} />
                 </div>
             </div>
         );
@@ -188,4 +201,4 @@ class ImagePicker extends React.Component {
     }
 }
 
-export default ImagePicker;
+export default withTranslation('translations')(ImagePicker);

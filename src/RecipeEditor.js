@@ -2,6 +2,8 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import CONFIG from './Config';
 import RecipeForm from './RecipeForm';
+import { withTranslation } from 'react-i18next';
+import Header from './Header';
 
 
 class RecipeEditor extends React.Component {
@@ -9,10 +11,35 @@ class RecipeEditor extends React.Component {
         super(props);
         let recipeId = this.props.match.params ? this.props.match.params.recipeId : false;
         let hasValidRecipe = recipeId && this.props.recipes && this.props.recipes.some(r => r._id === recipeId);
+        const t = this.props.t;
+        let editTitle = t('recipeEditor.editTitle', 'Edit recipe');
+        let createTitle = t('recipeEditor.createTitle', 'Create recipe');
         this.state = {
             recipe:  hasValidRecipe ? this.props.recipes.find(r => r._id === recipeId) : {},
-            title: hasValidRecipe ? "Edit" : "Create",
+            title: hasValidRecipe ? editTitle : createTitle,
             recipeId: recipeId
+        }
+    }
+
+    componentDidUpdate() {
+        let recipeId = this.props.match.params ? this.props.match.params.recipeId : false;
+        let hasValidRecipe = recipeId && this.props.recipes && this.props.recipes.some(r => r._id === recipeId);
+        const t = this.props.t;
+        let editTitle = t('recipeEditor.editTitle', 'Edit recipe');
+        let createTitle = t('recipeEditor.createTitle', 'Create recipe');
+
+        if (hasValidRecipe) {
+            if (this.state.title !== editTitle) {
+                this.setState({
+                    title: editTitle
+                });
+            }
+        } else {
+            if (this.state.title !== createTitle) {
+                this.setState({
+                    title: createTitle
+                });
+            }
         }
     }
 
@@ -70,17 +97,16 @@ class RecipeEditor extends React.Component {
     }
 
     render() {
+        const t = this.props.t;
         return (
             <div id="recipeForm">
-                <div className="uk-section uk-section-primary">
-                    <div className="uk-container">
-                        <Link to="/recipes">Back to Recipe List</Link>
-                        <h1>{this.state.title} recipe</h1>
+                <Header onLanguageChange={this.props.onLanguageChange}>
+                        <Link to="/recipes">{t('recipeEditor.recipeListLink', 'Back to Recipe List')}</Link>
+                        <h1>{this.state.title}</h1>
                         {this.props.match.params.recipeId !== undefined &&
                         <button className="uk-icon-button" data-uk-icon="trash" onClick={() => this.deleteRecipe(this.props.match.params.recipeId)}></button>
                         }
-                    </div>
-                </div>
+                </Header>
                 <div className="uk-section uk-section-default">
                     <div className="uk-container">
                         <RecipeForm recipe={this.state.recipe} callback={this.onFormSubmit} />
@@ -91,4 +117,4 @@ class RecipeEditor extends React.Component {
     }
 }
 
-export default withRouter(RecipeEditor);
+export default withTranslation('translations')(withRouter(RecipeEditor));
