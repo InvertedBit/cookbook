@@ -2,6 +2,8 @@ import React from 'react';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import { Route, BrowserRouter as Router, Switch, withRouter, Redirect } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
+import './i18n';
 import './App.scss';
 import RecipeList from './RecipeList';
 import Recipe from './Recipe';
@@ -17,8 +19,11 @@ class App extends React.Component {
         this.state = {
             recipes: null,
             loadingState: 'Starting App...',
-            splash: true
+            splash: true,
+            lang: 'en'
         }
+
+        this.onLanguageChange = this.onLanguageChange.bind(this);
     }
 
     componentDidMount() {
@@ -41,6 +46,13 @@ class App extends React.Component {
             .catch(console.log);
     }
 
+    onLanguageChange = (event) => {
+        let newLang = event.target.value;
+        this.setState({
+            lang: newLang
+        });
+        this.props.i18n.changeLanguage(newLang);
+    }
 
 
     render() {
@@ -59,19 +71,19 @@ class App extends React.Component {
                             }
                         </Route>
                         <Route exact path="/recipes">
-                            <RecipeList recipes={this.state.recipes} />
+                            <RecipeList onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                         </Route>
                         <Route exact path="/recipes/new">
-                            <RecipeEditor recipes={this.state.recipes} />
+                            <RecipeEditor onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                         </Route>
                         <Route exact path="/recipes/:recipeId">
                             {this.state.recipes &&
-                                <Recipe recipes={this.state.recipes} />
+                                <Recipe onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                             }
                         </Route>
                         <Route exact path="/recipes/edit/:recipeId">
                             {this.state.recipes &&
-                                <RecipeEditor recipes={this.state.recipes} />
+                                <RecipeEditor onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                             }
                         </Route>
                     </Switch>
@@ -82,4 +94,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default withTranslation('translations')(App);

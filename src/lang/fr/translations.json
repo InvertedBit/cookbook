@@ -1,0 +1,64 @@
+{
+    "imagePicker": {
+        "thumbnail": "Thumbnail",
+        "uploadButton": {
+            "text": "Upload image"
+        }
+    },
+    "ingredientPicker": {
+        "table": {
+            "headings": {
+                "ingredient": "Ingredient",
+                "amount": "Amount",
+                "unit": "Unit",
+                "action": "Action"
+            }
+        }
+    },
+    "recipeView": {
+        "recipeListLink": "Back to Recipe List",
+        "ingredientTable": {
+            "title": "Ingredients",
+            "heading": {
+                "name": "Name",
+                "amount": "Amount",
+                "unit": "Unit"
+            }
+        }
+    },
+    "recipeEditor": {
+        "editTitle": "Edit recipe",
+        "createTitle": "Create recipe",
+        "recipeListLink": "Back to Recipe List"
+    },
+    "recipeForm": {
+        "imagePicker": {
+            "label": "Upload Images"
+        },
+        "ingredientPicker": {
+            "label": "Pick ingredients"
+        },
+        "stepComposer": {
+            "label": "Compose steps"
+        },
+        "recipeName": {
+            "label": "Name"
+        },
+        "recipeDescription": {
+            "label": "Description"
+        },
+        "submitButton": {
+            "text": "Submit"
+        }
+    },
+    "recipeList": {
+        "viewButton": "View",
+        "editButton": "Edit",
+        "title": "Recipe List"
+    },
+    "stepComposer": {
+        "heading": "Heading",
+        "content": "Content",
+        "duration": "Duration"
+    }
+}

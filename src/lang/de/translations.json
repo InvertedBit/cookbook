@@ -1,0 +1,64 @@
+{
+    "imagePicker": {
+        "thumbnail": "Vorschaubild",
+        "uploadButton": {
+            "text": "Bild hochladen"
+        }
+    },
+    "ingredientPicker": {
+        "table": {
+            "headings": {
+                "ingredient": "Zutat",
+                "amount": "Menge",
+                "unit": "Einheit",
+                "action": "Aktion"
+            }
+        }
+    },
+    "recipeView": {
+        "recipeListLink": "Zur Rezeptliste",
+        "ingredientTable": {
+            "title": "Zutaten",
+            "heading": {
+                "name": "Name",
+                "amount": "Menge",
+                "unit": "Einheit"
+            }
+        }
+    },
+    "recipeEditor": {
+        "editTitle": "Rezept bearbeiten",
+        "createTitle": "Rezept erfassen",
+        "recipeListLink": "Zur Rezeptliste"
+    },
+    "recipeForm": {
+        "imagePicker": {
+            "label": "Bilder hochladen"
+        },
+        "ingredientPicker": {
+            "label": "Zutaten erfassen"
+        },
+        "stepComposer": {
+            "label": "Schritte erfassen"
+        },
+        "recipeName": {
+            "label": "Name"
+        },
+        "recipeDescription": {
+            "label": "Beschreibung"
+        },
+        "submitButton": {
+            "text": "Speichern"
+        }
+    },
+    "recipeList": {
+        "viewButton": "Anschauen",
+        "editButton": "Bearbeiten",
+        "title": "Rezeptliste"
+    },
+    "stepComposer": {
+        "heading": "Titel",
+        "content": "Inhalt",
+        "duration": "Dauer"
+    }
+}

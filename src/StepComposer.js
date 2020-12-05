@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 
 
 class StepComposer extends React.Component {
@@ -70,21 +71,22 @@ class StepComposer extends React.Component {
     }
 
     renderSteps() {
+        const { t } = this.props;
         let renderedSteps = this.state.steps.map(step => 
             <div key={step._id} className="uk-inline uk-width-expand">
                     <div className="uk-position-center-right-out">
                         <button className="uk-icon-button uk-margin-left uk-button-danger" data-uk-icon="trash" onClick={(e) => this.deleteStepHandler(e, step._id)}></button>
                     </div>
                     <div className="uk-form-controls uk-margin-bottom">
-                        <label className="uk-form-label" htmlFor={"heading-" + step._id}>Heading</label>
+                        <label className="uk-form-label" htmlFor={"heading-" + step._id}>{t('stepComposer.heading', 'Heading')}</label>
                         <input className="uk-input" type="text" id={"heading-" + step._id} name="heading" value={step.heading} onChange={(e) => this.onChange(e, step._id)} />
                     </div>
                     <div className="uk-form-controls uk-margin-bottom">
-                        <label className="uk-form-label" htmlFor={"content-" + step._id}>Content</label>
+                        <label className="uk-form-label" htmlFor={"content-" + step._id}>{t('stepComposer.content', 'Content')}</label>
                         <textarea className="uk-textarea" id={"content-" + step._id} name="content" value={step.content} onChange={(e) => this.onChange(e, step._id)} />
                     </div>
                     <div className="uk-form-controls uk-margin-bottom">
-                        <label className="uk-form-label" htmlFor={"duration-" + step._id}>Duration</label>
+                        <label className="uk-form-label" htmlFor={"duration-" + step._id}>{t('stepComposer.duration', 'Duration')}</label>
                         <input className="uk-input uk-form-width-small" type="number" id={"duration-" + step._id} name="duration" value={step.duration} onChange={(e) => this.onChange(e, step._id)} />
                         <input className="uk-input uk-form-width-small" type="text" id={"unit-" + step._id} name="unit" value={step.unit} onChange={(e) => this.onChange(e, step._id)} />
                     </div>
@@ -103,4 +105,4 @@ class StepComposer extends React.Component {
     }
 }
 
-export default StepComposer;
+export default withTranslation('translations')(StepComposer);
