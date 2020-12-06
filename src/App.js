@@ -13,6 +13,7 @@ import CONFIG from './Config';
 import Login from './Login';
 import Logout from './Logout';
 import PrivateRoute from './PrivateRoute';
+import NoMatch from './NoMatch';
 
 UIkit.use(Icons);
 
@@ -121,6 +122,9 @@ class App extends React.Component {
                                 <RecipeEditor onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                             }
                         </PrivateRoute>
+                        <Route path="*">
+                            <NoMatch onLanguageChange={this.onLanguageChange} />
+                        </Route>
                     </Switch>
                 </Router>
             );

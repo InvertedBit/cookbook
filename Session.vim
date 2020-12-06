@@ -7,7 +7,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +39 src/App.js
+badd +126 src/App.js
 badd +62 src/RecipeList.js
 badd +58 src/Recipe.js
 badd +1 public/index.html
@@ -34,6 +34,7 @@ badd +22 src/Login.js
 badd +11 src/LoginForm.js
 badd +26 src/Logout.js
 badd +14 src/PrivateRoute.js
+badd +18 src/NoMatch.js
 argglobal
 %argdel
 $argadd src/App.js
@@ -55,11 +56,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 89 - ((55 * winheight(0) + 28) / 56)
+let s:l = 154 - ((55 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-89
+154
 normal! 053|
 tabedit src/i18next-parser.config.js
 set splitbelow splitright
@@ -155,12 +156,37 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 39 - ((23 * winheight(0) + 28) / 56)
+let s:l = 126 - ((36 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-39
-normal! 048|
+126
+normal! 080|
+tabedit src/NoMatch.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 18 - ((17 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+18
+normal! 077|
 tabedit src/PrivateRoute.js
 set splitbelow splitright
 set nosplitbelow
@@ -205,12 +231,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 27 - ((26 * winheight(0) + 28) / 56)
+let s:l = 36 - ((35 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-27
-normal! 013|
+36
+normal! 0
 tabedit src/Login.js
 set splitbelow splitright
 set nosplitbelow
