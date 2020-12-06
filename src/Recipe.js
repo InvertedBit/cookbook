@@ -54,11 +54,11 @@ function Recipe(props) {
                             <h3 className="uk-h3">{t('recipeView.ingredientTable.title', 'Ingredients')}</h3>
                             <table className="uk-table">
                                 <thead>
-                                    <th>
-                                        <td>{t('recipeView.ingredientTable.heading.name', 'Name')}</td>
-                                        <td>{t('recipeView.ingredientTable.heading.amount', 'Amount')}</td>
-                                        <td>{t('recipeView.ingredientTable.heading.unit', 'Unit')}</td>
-                                    </th>
+                                    <tr>
+                                        <th>{t('recipeView.ingredientTable.heading.name', 'Name')}</th>
+                                        <th>{t('recipeView.ingredientTable.heading.amount', 'Amount')}</th>
+                                        <th>{t('recipeView.ingredientTable.heading.unit', 'Unit')}</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
