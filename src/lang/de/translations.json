@@ -42,6 +42,11 @@
         "success": "Successfully logged out",
         "failure": "Failed logging out"
     },
+    "noMatch": {
+        "title": "Page not found...",
+        "message": "Error 404: No page found at \"{{pathname}}\"",
+        "recipeListLink": "Go to recipe list"
+    },
     "recipeView": {
         "recipeListLink": "Zur Rezeptliste",
         "ingredientTable": {
@@ -82,6 +87,23 @@
         "viewButton": "Anschauen",
         "editButton": "Bearbeiten",
         "title": "Rezeptliste"
+    },
+    "register": {
+        "title": "Register"
+    },
+    "registerForm": {
+        "name": {
+            "label": "Name"
+        },
+        "email": {
+            "label": "E-Mail"
+        },
+        "password": {
+            "label": "Password"
+        },
+        "submitButton": {
+            "text": "Register"
+        }
     },
     "stepComposer": {
         "heading": "Titel",
