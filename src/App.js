@@ -14,6 +14,7 @@ import Login from './Login';
 import Logout from './Logout';
 import PrivateRoute from './PrivateRoute';
 import NoMatch from './NoMatch';
+import Register from './Register';
 
 UIkit.use(Icons);
 
@@ -103,9 +104,12 @@ class App extends React.Component {
                         <Route exact path="/login">
                             <Login onLanguageChange={this.onLanguageChange} />
                         </Route>
-                        <Route exact path="/logout">
-                            <Logout onLanguageChange={this.onLanguageChange} />
+                        <Route exact path="/register">
+                            <Register onLanguageChange={this.onLanguageChange} />
                         </Route>
+                        <PrivateRoute exact path="/logout">
+                            <Logout onLanguageChange={this.onLanguageChange} />
+                        </PrivateRoute>
                         <PrivateRoute exact path="/recipes">
                             <RecipeList onLanguageChange={this.onLanguageChange} recipes={this.state.recipes} />
                         </PrivateRoute>

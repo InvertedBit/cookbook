@@ -1,12 +1,12 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
+import RegisterForm from './RegisterForm';
 import Header from './Header';
-import LoginForm from './LoginForm';
 import AuthService from './services/auth.service';
 
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
 
@@ -14,11 +14,10 @@ class Login extends React.Component {
     }
 
     onFormSubmit(values) {
-        AuthService.login(values.email, values.password).then((res) => {
-            let { from } = this.props.location.state || { from: { pathname: '/recipes' } }
+        AuthService.register(values.name, values.email, values.password).then((res) => {
             let user = res;
             if (user) {
-                this.props.history.replace(from);
+                this.props.history.replace('/recipes');
             }
         });
     }
@@ -28,11 +27,11 @@ class Login extends React.Component {
         return (
             <div>
                 <Header onLanguageChange={this.props.onLanguageChange}>
-                    <h1>{t('login.title', 'Login')}</h1>
+                    <h1>{t('register.title', 'Register')}</h1>
                 </Header>
                 <div className="uk-section uk-section-default">
                     <div className="uk-container">
-                        <LoginForm callback={this.onFormSubmit} />
+                        <RegisterForm callback={this.onFormSubmit} />
                     </div>
                 </div>
             </div>
@@ -40,4 +39,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(withTranslation('translations')(Login));
+export default withRouter(withTranslation('translations')(Register));

@@ -16,9 +16,7 @@ class Logout extends React.Component {
         
         AuthService.logout().then((res) => {
             let success = res;
-            console.log(success);
             if (success) {
-                console.log('redirecting to /');
                 props.history.push('/login');
             }
 

@@ -7,7 +7,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +126 src/App.js
+badd +108 src/App.js
 badd +62 src/RecipeList.js
 badd +58 src/Recipe.js
 badd +1 public/index.html
@@ -29,12 +29,15 @@ badd +1 src/lang/de/translations.json
 badd +41 src/Header.js
 badd +89 src/StepComposer.js
 badd +0 src/services/auth.js
-badd +18 src/services/auth.service.js
+badd +66 src/services/auth.service.js
 badd +22 src/Login.js
 badd +11 src/LoginForm.js
 badd +26 src/Logout.js
 badd +14 src/PrivateRoute.js
 badd +18 src/NoMatch.js
+badd +36 src/Register.js
+badd +0 RegisterForm.js
+badd +0 src/RegisterForm.js
 argglobal
 %argdel
 $argadd src/App.js
@@ -56,11 +59,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 154 - ((55 * winheight(0) + 28) / 56)
+let s:l = 181 - ((55 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-154
+181
 normal! 053|
 tabedit src/i18next-parser.config.js
 set splitbelow splitright
@@ -131,12 +134,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((21 * winheight(0) + 28) / 56)
+let s:l = 85 - ((39 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
-normal! 034|
+85
+normal! 017|
 tabedit src/App.js
 set splitbelow splitright
 set nosplitbelow
@@ -156,12 +159,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 126 - ((36 * winheight(0) + 28) / 56)
+let s:l = 108 - ((18 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-126
-normal! 080|
+108
+normal! 081|
 tabedit src/NoMatch.js
 set splitbelow splitright
 set nosplitbelow
@@ -231,12 +234,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 36 - ((35 * winheight(0) + 28) / 56)
+let s:l = 20 - ((19 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
-normal! 0
+20
+normal! 017|
 tabedit src/Login.js
 set splitbelow splitright
 set nosplitbelow
@@ -256,12 +259,62 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((22 * winheight(0) + 28) / 56)
+let s:l = 21 - ((20 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
-normal! 042|
+21
+normal! 017|
+tabedit src/Register.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 20 - ((19 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+20
+normal! 027|
+tabedit src/RegisterForm.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
 tabedit src/LoginForm.js
 set splitbelow splitright
 set nosplitbelow
@@ -281,12 +334,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
-normal! 013|
+1
+normal! 0
 tabedit src/RecipeList.js
 set splitbelow splitright
 set nosplitbelow
@@ -306,12 +359,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((29 * winheight(0) + 28) / 56)
+let s:l = 79 - ((41 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 086|
+79
+normal! 0
 tabedit src/Header.js
 set splitbelow splitright
 set nosplitbelow
@@ -331,12 +384,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 55 - ((18 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-55
-normal! 014|
+1
+normal! 026|
 tabedit src/RecipeEditor.js
 set splitbelow splitright
 set nosplitbelow

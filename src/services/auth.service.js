@@ -15,7 +15,6 @@ class AuthService {
         })
             .then(res => res.json())
             .then((data) => {
-                console.log('login response', data);
                 if (data) {
                     if (data.data.token) {
                         localStorage.setItem('user', JSON.stringify(data.data));
@@ -42,7 +41,6 @@ class AuthService {
             })
                 .then(res => res.json())
                 .then((data) => {
-                    console.log('logout response', data);
                     if (data.status === 'success') {
                         localStorage.removeItem('user');
                         this.result = true;
@@ -55,7 +53,33 @@ class AuthService {
         return this.result;
     }
 
-    register (name, email, password) {}
+    async register (name, email, password) {
+        this.result = false;
+        await fetch(CONFIG.API_URL + 'api/v1/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            })
+        })
+            .then(res => res.json())
+            .then((data) => {
+                if (data) {
+                    if (data.data.token) {
+                        localStorage.setItem('user', JSON.stringify(data.data));
+                    }
+                    this.result = data.data;
+                } else {
+                    this.result = false;
+                }
+            })
+            .catch(console.log);
+        return this.result;
+    }
 
     getCurrentUser () {
         const user = JSON.parse(localStorage.getItem('user'));
