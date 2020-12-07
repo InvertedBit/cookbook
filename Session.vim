@@ -14,7 +14,7 @@ badd +1 public/index.html
 badd +13 src/RecipeSteps.js
 badd +40 src/RecipeEditor.js
 badd +193 src/ImagePicker.js
-badd +1 src/Config.js
+badd +3 src/Config.js
 badd +56 src/RecipeForm.js
 badd +6 src/ImagePicker.scss
 badd +118 src/IngredientPicker.js
@@ -61,11 +61,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 263 - ((55 * winheight(0) + 28) / 56)
+let s:l = 285 - ((55 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-263
+285
 normal! 053|
 tabedit Dockerfile
 set splitbelow splitright
@@ -611,12 +611,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((1 * winheight(0) + 28) / 56)
+let s:l = 3 - ((2 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 0
+3
+normal! 057|
 tabedit src/Recipe.js
 set splitbelow splitright
 set nosplitbelow
