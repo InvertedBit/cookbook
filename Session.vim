@@ -12,7 +12,7 @@ badd +62 src/RecipeList.js
 badd +58 src/Recipe.js
 badd +1 public/index.html
 badd +13 src/RecipeSteps.js
-badd +40 src/RecipeEditor.js
+badd +98 src/RecipeEditor.js
 badd +193 src/ImagePicker.js
 badd +3 src/Config.js
 badd +56 src/RecipeForm.js
@@ -29,7 +29,7 @@ badd +1 src/lang/de/translations.json
 badd +41 src/Header.js
 badd +89 src/StepComposer.js
 badd +0 src/services/auth.js
-badd +66 src/services/auth.service.js
+badd +1 src/services/auth.service.js
 badd +22 src/Login.js
 badd +11 src/LoginForm.js
 badd +26 src/Logout.js
@@ -38,8 +38,11 @@ badd +18 src/NoMatch.js
 badd +36 src/Register.js
 badd +0 RegisterForm.js
 badd +0 src/RegisterForm.js
-badd +0 captain-definition
+badd +1 captain-definition
 badd +0 Dockerfile
+badd +0 package.json
+badd +0 .env.development
+badd +0 .env.production
 argglobal
 %argdel
 $argadd src/App.js
@@ -61,12 +64,137 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 285 - ((55 * winheight(0) + 28) / 56)
+let s:l = 1828 - ((55 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-285
-normal! 053|
+1828
+normal! 054|
+tabedit .env.development
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 010|
+tabedit .env.production
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 010|
+tabedit captain-definition
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 8 - ((7 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+8
+normal! 0
+tabedit package.json
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 18 - ((17 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+18
+normal! 024|
+tabedit src/Config.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 3 - ((2 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+3
+normal! 035|
 tabedit Dockerfile
 set splitbelow splitright
 set nosplitbelow
@@ -91,31 +219,6 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 11
-normal! 0
-tabedit captain-definition
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
 normal! 0
 tabedit src/i18next-parser.config.js
 set splitbelow splitright
@@ -186,12 +289,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 85 - ((39 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-85
-normal! 017|
+1
+normal! 031|
 tabedit src/App.js
 set splitbelow splitright
 set nosplitbelow
@@ -411,11 +514,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 79 - ((41 * winheight(0) + 28) / 56)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
+2
 normal! 0
 tabedit src/Header.js
 set splitbelow splitright
@@ -461,12 +564,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 104 - ((41 * winheight(0) + 28) / 56)
+let s:l = 93 - ((25 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-104
-normal! 0
+93
+normal! 010|
 tabedit src/RecipeForm.js
 set splitbelow splitright
 set nosplitbelow
@@ -592,31 +695,6 @@ exe s:l
 normal! zt
 6
 normal! 022|
-tabedit src/Config.js
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-3
-normal! 057|
 tabedit src/Recipe.js
 set splitbelow splitright
 set nosplitbelow
