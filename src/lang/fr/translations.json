@@ -1,4 +1,12 @@
 {
+    "header": {
+        "loginLink": "Login",
+        "registerLink": "Register",
+        "userSection": {
+            "loggedInAs": "Logged in as {{name}}"
+        },
+        "logoutLink": "Logout"
+    },
     "imagePicker": {
         "thumbnail": "Thumbnail",
         "uploadButton": {
@@ -14,6 +22,30 @@
                 "action": "Action"
             }
         }
+    },
+    "login": {
+        "title": "Login"
+    },
+    "loginForm": {
+        "email": {
+            "label": "E-Mail"
+        },
+        "password": {
+            "label": "Password"
+        },
+        "submitButton": {
+            "text": "Login"
+        }
+    },
+    "logout": {
+        "title": "Logout",
+        "success": "Successfully logged out",
+        "failure": "Failed logging out"
+    },
+    "noMatch": {
+        "title": "Page not found...",
+        "message": "Error 404: No page found at \"{{pathname}}\"",
+        "recipeListLink": "Go to recipe list"
     },
     "recipeView": {
         "recipeListLink": "Back to Recipe List",
@@ -55,6 +87,23 @@
         "viewButton": "View",
         "editButton": "Edit",
         "title": "Recipe List"
+    },
+    "register": {
+        "title": "Register"
+    },
+    "registerForm": {
+        "name": {
+            "label": "Name"
+        },
+        "email": {
+            "label": "E-Mail"
+        },
+        "password": {
+            "label": "Password"
+        },
+        "submitButton": {
+            "text": "Register"
+        }
     },
     "stepComposer": {
         "heading": "Heading",

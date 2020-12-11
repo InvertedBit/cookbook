@@ -77,17 +77,3 @@ function RecipeList(props) {
 
 export default RecipeList;
 
-/*
- *
-
-                <div className="uk-section uk-section-primary">
-                    <div className="uk-container">
-                        <h1>{t('recipeList.title', 'Recipe List')}</h1>
-                        <button className="uk-icon-button" data-uk-icon="plus" onClick={() => history.push('/recipes/new')}></button>
-                        {languageSwitcher}
-                    </div>
-                </div>
-
-
- *
- */

@@ -4,6 +4,7 @@ import CONFIG from './Config';
 import RecipeForm from './RecipeForm';
 import { withTranslation } from 'react-i18next';
 import Header from './Header';
+import AuthService from './services/auth.service';
 
 
 class RecipeEditor extends React.Component {
@@ -19,6 +20,8 @@ class RecipeEditor extends React.Component {
             title: hasValidRecipe ? editTitle : createTitle,
             recipeId: recipeId
         }
+
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     componentDidUpdate() {
@@ -85,13 +88,13 @@ class RecipeEditor extends React.Component {
 
         fetch(CONFIG.API_URL + 'api/v1/recipes', {
             method: 'POST',
+            headers: AuthService.getAuthHeader(),
             body: formData
         })
-            .then(response => {
-                response.json()
-            })
+            .then(response => response.json())
             .then((data) => {
-                console.log(data)
+                console.log('response:',data);
+                this.props.history.push('/recipes/' + data.data._id);
             })
             .catch(console.log);
     }
