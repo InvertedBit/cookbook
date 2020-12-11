@@ -40,7 +40,7 @@ badd +0 RegisterForm.js
 badd +0 src/RegisterForm.js
 badd +1 captain-definition
 badd +0 Dockerfile
-badd +0 package.json
+badd +25 package.json
 badd +0 .env.development
 badd +0 .env.production
 argglobal
@@ -64,12 +64,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1828 - ((55 * winheight(0) + 28) / 56)
+let s:l = 1987 - ((55 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1828
-normal! 054|
+1987
+normal! 055|
 tabedit .env.development
 set splitbelow splitright
 set nosplitbelow
@@ -145,31 +145,6 @@ exe s:l
 normal! zt
 8
 normal! 0
-tabedit package.json
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-18
-normal! 024|
 tabedit src/Config.js
 set splitbelow splitright
 set nosplitbelow
@@ -220,6 +195,31 @@ exe s:l
 normal! zt
 11
 normal! 0
+tabedit package.json
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 25 - ((24 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+25
+normal! 05|
 tabedit src/i18next-parser.config.js
 set splitbelow splitright
 set nosplitbelow
