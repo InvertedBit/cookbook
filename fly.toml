@@ -1,4 +1,4 @@
-app = "cookbook-455f"
+app = "hl4b-cookbook"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = [ ]
